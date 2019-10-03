@@ -4,16 +4,15 @@ import { sentMessage, getNewMessage, clearSockets } from '../api';
 
 export default class ChatRoom extends React.Component {
     constructor(props) {
-        console.log("chat props: ",props)
         super(props);
     }
 
     state = {
         messages: [
             {
-                author: 'default',
-                message: 'default msgs',
-                timeStamp: 123
+                author: 'admin',
+                message: 'hi everypony!',
+                timeStamp: Date.now()
             }
         ],
         inputText: '',

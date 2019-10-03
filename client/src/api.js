@@ -1,12 +1,12 @@
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:8000');
 
-const sentName = (name) => {
-    socket.emit('sentName', { name });
+const sentStartRequest = (info) => {
+    socket.emit('sentStartRequest', info);
 }
 
 const getName = (cb) => {
-    socket.on('setName', ({ userName }) => cb(null, userName));
+    socket.on('setUser', ({ userName }) => cb(null, userName));
 }
 const sentMessage = (msg) => {
     socket.emit('sentMessage', msg);

@@ -7,18 +7,24 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-function App() {
+function Routes() {
     return (
         <Router>
-            <Route exact path="/" component={ChatRoom} />
-            <Route exact path="/room/:roomId" component={ChatRoom} />
+            <Route exact path="/" component={App} />
+            <Route exact path="/room/:roomId" component={App} />
         </Router>
     )
 } 
 
-class App1 extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
+        const { roomId } = props.match.params;
+        if (typeof roomId === 'undefined') {
+
+        }
+        console.log("roomId: ",roomId)
+
     }
     state = {
         userName: '',
@@ -36,13 +42,14 @@ class App1 extends React.Component {
         const {
             userName
         } = this.state;
-        if (userName === '') {
+        const { roomId } = props.match.params;
+        // if (userName === '' || ) {
             return <StartScreen />
-        }
+        // }
         return <ChatRoom userName={userName} />;
     }
 }
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Routes />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
